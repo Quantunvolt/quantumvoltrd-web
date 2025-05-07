@@ -103,35 +103,32 @@
       padding: 40px;
       text-align: center;
     }
-
     .services, .contact {
       background-color: #004d6b;
     }
-
     .services h2, .contact h2 {
       font-size: 2rem;
       margin-bottom: 20px;
     }
-
-    .services div {
+    .services .card-container {
       display: flex;
       justify-content: space-around;
       flex-wrap: wrap;
       gap: 20px;
     }
-
-    .services div div {
+    .services .card {
       background-color: #005e7c;
       padding: 20px;
       width: 30%;
       border-radius: 10px;
       min-width: 250px;
     }
-
-    .services div div h3 {
-      margin-top: 10px;
+    .services .card img {
+      width: 100%;
+      border-radius: 8px;
+      height: 150px;
+      object-fit: cover;
     }
-
     .contact form {
       display: flex;
       flex-direction: column;
@@ -139,67 +136,37 @@
       max-width: 400px;
       margin: 0 auto;
     }
-
-    .contact form input,
-    .contact form textarea {
+    .contact form input, .contact form textarea {
       padding: 10px;
       font-size: 1rem;
       border-radius: 5px;
       border: 1px solid #004d6b;
     }
-
     .social-icons {
       margin-top: 20px;
       display: flex;
       justify-content: center;
       gap: 20px;
     }
-
     .social-icons a {
       color: white;
       font-size: 2rem;
       transition: transform 0.3s, color 0.3s;
     }
-
     .social-icons a:hover {
       color: #f4c542;
       transform: scale(1.2);
     }
-
     footer {
       background-color: #002a3a;
       padding: 20px;
       text-align: center;
     }
-
-    @media (max-width: 768px) {
-      .hero {
-        height: 200px;
-      }
-
-      .services div {
-        flex-direction: column;
-      }
-
-      .services div div {
-        width: 80%;
-        margin: 0 auto;
-      }
-
-      nav {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      nav a {
-        font-size: 1.2rem;
-      }
-    }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Quantum Volt RD">
+    <img src="img/logo.png" alt="Quantum Volt RD">
     <nav>
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
@@ -208,40 +175,43 @@
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
-  
+
   <section class="hero" id="inicio">
     <h1 class="floating-text">Conectamos tu futuro</h1>
     <button onclick="window.location.href='#servicios'">Conoce nuestros servicios</button>
   </section>
-  
+
   <section id="servicios" class="services">
     <h2>Nuestros Servicios</h2>
-    <div>
-      <div>
+    <div class="card-container">
+      <div class="card">
+        <img src="img/tech.jpg" alt="Instalación tecnológica">
         <h3>Instalación Tecnológica</h3>
         <p>Instalación y configuración de equipos tecnológicos y televisores.</p>
       </div>
-      <div>
+      <div class="card">
+        <img src="img/smart.jpg" alt="Smart services">
         <h3>Smart Services</h3>
         <p>Configuración de servicios smart en tu hogar o negocio.</p>
       </div>
-      <div>
+      <div class="card">
+        <img src="img/electric.jpg" alt="Instalación eléctrica">
         <h3>Electricidad</h3>
         <p>Instalaciones eléctricas para todos los espacios.</p>
       </div>
     </div>
   </section>
-  
+
   <section id="proyectos">
     <h2>Nuestros Trabajos</h2>
     <p>Aquí aparecerán fotos de nuestros proyectos realizados.</p>
   </section>
-  
+
   <section id="nosotros">
     <h2>Sobre Nosotros</h2>
     <p>Quantum Volt RD es una empresa dedicada a ofrecer soluciones innovadoras y de calidad en servicios eléctricos y tecnológicos. Conectamos tu futuro con cada instalación.</p>
   </section>
-  
+
   <section id="contacto" class="contact">
     <h2>Contacto</h2>
     <form>
@@ -251,6 +221,7 @@
       <button type="submit">Enviar mensaje</button>
     </form>
     <p>Teléfonos: 829-778-9089 | 829-775-7401</p>
+
     <div class="social-icons">
       <a href="https://www.instagram.com/quantumvoltrd/" target="_blank" title="Instagram">
         <i class="fab fa-instagram"></i>
@@ -260,15 +231,9 @@
       </a>
     </div>
   </section>
-  
+
   <footer>
     <p>&copy; 2025 Quantum Volt RD. Todos los derechos reservados.</p>
   </footer>
-</body>
-</html>
-
-  <script>
-    // Aquí puedes agregar interactividad más adelante
-  </script>
 </body>
 </html>
