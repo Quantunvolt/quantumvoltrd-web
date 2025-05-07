@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quantum Volt RD</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #003d5b;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #002a3a;
+    }
+
+    header img {
+      width: 160px;
+    }
+
+    .hero {
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .floating-text {
+      font-size: 3rem;
+      font-weight: bold;
+      color: white;
+      animation: float 3s ease-in-out infinite;
+      position: relative;
+      cursor: pointer;
+      transition: color 0.3s;
+      text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+    }
+
+    .floating-text:hover {
+      color: #00ffff;
+      text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00e5ff,
+        0 0 60px #00ccff;
+      animation: flash 0.2s alternate infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes flash {
+      0% {
+        text-shadow:
+          0 0 10px #00ffff,
+          0 0 20px #00ffff,
+          0 0 30px #00e5ff,
+          0 0 40px #00ccff;
+      }
+      100% {
+        text-shadow:
+          0 0 20px #00ffff,
+          0 0 30px #00e5ff,
+          0 0 50px #00ccff,
+          0 0 70px #00bfff;
+      }
+    }
+
+    .hero button {
+      background-color: #f4c542;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .hero button:hover {
+      background-color: #d8b438;
+    }
+
+    section {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .services, .contact {
+      background-color: #004d6b;
+    }
+
+    .services h2, .contact h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .services div {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .services div div {
+      background-color: #005e7c;
+      padding: 20px;
+      width: 30%;
+      border-radius: 10px;
+      min-width: 250px;
+    }
+
+    .services div div h3 {
+      margin-top: 10px;
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .contact form input,
+    .contact form textarea {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #004d6b;
+    }
+
+    .social-icons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 2rem;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #f4c542;
+      transform: scale(1.2);
+    }
+
+    footer {
+      background-color: #002a3a;
+      padding: 20px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        height: 200px;
+      }
+
+      .services div {
+        flex-direction: column;
+      }
+
+      .services div div {
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav a {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Quantum Volt RD">
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#nosotros">Sobre Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+  
+  <section class="hero" id="inicio">
+    <h1 class="floating-text">Conectamos tu futuro</h1>
+    <button onclick="window.location.href='#servicios'">Conoce nuestros servicios</button>
+  </section>
+  
+  <section id="servicios" class="services">
+    <h2>Nuestros Servicios</h2>
+    <div>
+      <div>
+        <h3>Instalación Tecnológica</h3>
+        <p>Instalación y configuración de equipos tecnológicos y televisores.</p>
+      </div>
+      <div>
+        <h3>Smart Services</h3>
+        <p>Configuración de servicios smart en tu hogar o negocio.</p>
+      </div>
+      <div>
+        <h3>Electricidad</h3>
+        <p>Instalaciones eléctricas para todos los espacios.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="proyectos">
+    <h2>Nuestros Trabajos</h2>
+    <p>Aquí aparecerán fotos de nuestros proyectos realizados.</p>
+  </section>
+  
+  <section id="nosotros">
+    <h2>Sobre Nosotros</h2>
+    <p>Quantum Volt RD es una empresa dedicada a ofrecer soluciones innovadoras y de calidad en servicios eléctricos y tecnológicos. Conectamos tu futuro con cada instalación.</p>
+  </section>
+  
+  <section id="contacto" class="contact">
+    <h2>Contacto</h2>
+    <form>
+      <input type="text" placeholder="Tu nombre" required>
+      <input type="email" placeholder="Tu correo" required>
+      <textarea placeholder="Tu mensaje" required></textarea>
+      <button type="submit">Enviar mensaje</button>
+    </form>
+    <p>Teléfonos: 829-778-9089 | 829-775-7401</p>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/quantumvoltrd/" target="_blank" title="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://wa.me/18297789089" target="_blank" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+  </section>
+  
+  <footer>
+    <p>&copy; 2025 Quantum Volt RD. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
+
+  <script>
+    // Aquí puedes agregar interactividad más adelante
+  </script>
+</body>
+</html>
