@@ -8,7 +8,7 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   
-  <!-- Google Analytics 4 (Placeholder para configurar tu ID G-XXXXXXXXXX) -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -26,6 +26,7 @@
     </div>
     <nav>
       <a href="#inicio">Inicio</a>
+      <a href="#cotizador">Cotizador</a>
       <a href="#servicios">Servicios</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#testimonios">Testimonios</a>
@@ -43,25 +44,42 @@
     </div>
   </section>
 
-  <!-- Cotizador Interactivo Dinámico (Nuevo) -->
+  <!-- Cotizador Interactivo Dinámico (Mejorado) -->
   <section class="interactive-assistant" id="cotizador">
-    <h2>Cotizador Rápido de Proyectos</h2>
-    <p class="section-desc">Selecciona el tipo de servicio que necesitas para estructurar tu solicitud</p>
-    <div class="assistant-options">
-      <button class="option-btn" onclick="seleccionarServicio('Domótica y Smart Home')">
-        <i class="fas fa-home"></i> Domótica & Smart Home
-      </button>
-      <button class="option-btn" onclick="seleccionarServicio('Instalaciones Eléctricas')">
-        <i class="fas fa-bolt"></i> Instalaciones Eléctricas
-      </button>
-      <button class="option-btn" onclick="seleccionarServicio('Cámaras y Seguridad')">
-        <i class="fas fa-video"></i> Cámaras & Seguridad
-      </button>
+    <h2>Calculadora de Proyectos</h2>
+    <p class="section-desc">Selecciona el tipo de servicio y el alcance para estimar tu requerimiento</p>
+    
+    <div class="cotizador-box">
+      <div class="cotizador-group">
+        <label>1. Selecciona el servicio:</label>
+        <div class="assistant-options">
+          <button class="option-btn" onclick="actualizarCotizacion('Domótica y Smart Home', 15000)">
+            <i class="fas fa-home"></i> Domótica
+          </button>
+          <button class="option-btn" onclick="actualizarCotizacion('Instalaciones Eléctricas', 10000)">
+            <i class="fas fa-bolt"></i> Eléctrico
+          </button>
+          <button class="option-btn" onclick="actualizarCotizacion('Cámaras y Seguridad', 12000)">
+            <i class="fas fa-video"></i> Cámaras
+          </button>
+        </div>
+      </div>
+
+      <div class="cotizador-group" style="margin-top: 20px;">
+        <label>2. Escala del proyecto (Espacios / Áreas):</label>
+        <select id="escala-proyecto" onchange="recalcularPrecio()" style="padding: 10px; border-radius: 8px; background: #182844; color: white; border: 1px solid rgba(0,240,255,0.3); margin-top: 10px;">
+          <option value="1">Área Pequeña (1 a 3 espacios)</option>
+          <option value="2" selected>Área Mediana (Casa / Oficina estándar)</option>
+          <option value="4">Área Grande / Comercial Completo</option>
+        </select>
+      </div>
     </div>
+
     <div id="assistant-response" class="assistant-response hidden">
       <p id="response-text"></p>
+      <div class="precio-estimado" style="font-size: 1.4rem; color: #f4c542; margin: 10px 0; font-weight: bold;" id="precio-texto"></div>
       <a id="whatsapp-link" href="#" target="_blank" class="whatsapp-btn-inline" onclick="gtag('event', 'click_whatsapp_cotizador');">
-        <i class="fab fa-whatsapp"></i> Enviar cotización por WhatsApp
+        <i class="fab fa-whatsapp"></i> Enviar esta cotización por WhatsApp
       </a>
     </div>
   </section>
@@ -113,7 +131,7 @@
     </div>
   </section>
 
-  <!-- Sección de Testimonios / Reseñas de Confianza -->
+  <!-- Sección de Testimonios -->
   <section id="testimonios" class="testimonials">
     <h2>Lo que dicen nuestros clientes</h2>
     <p class="section-desc">La satisfacción y seguridad de quienes confían en Quantum Volt RD</p>
@@ -173,17 +191,33 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- Scripts Interactivos -->
+  <!-- Scripts del Cotizador Dinámico -->
   <script>
-    function seleccionarServicio(servicio) {
+    let servicioActual = '';
+    let precioBaseActual = 0;
+
+    function actualizarCotizacion(servicio, precioBase) {
+      servicioActual = servicio;
+      precioBaseActual = precioBase;
+      recalcularPrecio();
+    }
+
+    function recalcularPrecio() {
+      if (!servicioActual) return;
+
+      const multiplicador = document.getElementById('escala-proyecto').value;
+      const estimado = precioBaseActual * multiplicador;
+      
       const responseBox = document.getElementById('assistant-response');
       const responseText = document.getElementById('response-text');
+      const precioTexto = document.getElementById('precio-texto');
       const whatsappLink = document.getElementById('whatsapp-link');
 
       responseBox.classList.remove('hidden');
-      responseText.innerHTML = `Has seleccionado: <strong>${servicio}</strong>. Haz clic abajo para enviar tu configuración al WhatsApp de Quantum Volt RD y coordinar la evaluación técnica.`;
-      
-      const mensaje = encodeURIComponent(`Hola Quantum Volt RD, quiero solicitar una cotización para el servicio de: ${servicio}. Me interesa evaluar mi espacio.`);
+      responseText.innerHTML = `Estimado aproximado para: <strong>${servicioActual}</strong>`;
+      precioTexto.innerHTML = `RD$ ${estimado.toLocaleString()} aprox.`;
+
+      const mensaje = encodeURIComponent(`Hola Quantum Volt RD, utilicé el cotizador web y me interesa un proyecto de ${servicioActual} (Escala seleccionada: Nivel ${multiplicador}). El estimado indicó RD$ ${estimado.toLocaleString()}. ¿Podemos coordinar una visita técnica?`);
       whatsappLink.href = `https://wa.me/18297789089?text=${mensaje}`;
     }
 
