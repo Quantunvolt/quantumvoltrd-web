@@ -33,6 +33,29 @@
     </div>
   </section>
 
+  <!-- Asistente Interactivo de Servicios (Nuevo) -->
+  <section class="interactive-assistant">
+    <h2>¿Qué solución buscas hoy?</h2>
+    <p class="section-desc">Selecciona una categoría para recibir asesoría técnica instantánea</p>
+    <div class="assistant-options">
+      <button class="option-btn" onclick="seleccionarServicio('Domótica y Smart Home')">
+        <i class="fas fa-home"></i> Domótica & Smart Home
+      </button>
+      <button class="option-btn" onclick="seleccionarServicio('Instalaciones Eléctricas')">
+        <i class="fas fa-bolt"></i> Instalaciones Eléctricas
+      </button>
+      <button class="option-btn" onclick="seleccionarServicio('Cámaras y Seguridad')">
+        <i class="fas fa-video"></i> Cámaras & Seguridad
+      </button>
+    </div>
+    <div id="assistant-response" class="assistant-response hidden">
+      <p id="response-text"></p>
+      <a id="whatsapp-link" href="#" target="_blank" class="whatsapp-btn-inline">
+        <i class="fab fa-whatsapp"></i> Hablar con un especialista por WhatsApp
+      </a>
+    </div>
+  </section>
+
   <!-- Sección de Servicios -->
   <section id="servicios" class="services">
     <h2>Nuestros Servicios</h2>
@@ -61,7 +84,7 @@
     <p class="section-desc">Innovación y calidad comprobada en cada proyecto ejecutado.</p>
     <div class="projects-grid">
       <div class="project-card">
-        <div class="project-placeholder"><i class="fas bolt fa-bolt"></i><span>Automatización Residencial</span></div>
+        <div class="project-placeholder"><i class="fas fa-bolt"></i><span>Automatización Residencial</span></div>
       </div>
       <div class="project-card">
         <div class="project-placeholder"><i class="fas fa-solar-panel"></i><span>Sistemas Eléctricos</span></div>
@@ -113,6 +136,21 @@
   <a href="https://wa.me/18297789089" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
+
+  <!-- Script para el Asistente Interactivo -->
+  <script>
+    function seleccionarServicio(servicio) {
+      const responseBox = document.getElementById('assistant-response');
+      const responseText = document.getElementById('response-text');
+      const whatsappLink = document.getElementById('whatsapp-link');
+
+      responseBox.classList.remove('hidden');
+      responseText.innerHTML = `Has seleccionado: <strong>${servicio}</strong>. Un técnico especializado de Quantum Volt RD te atenderá de inmediato para evaluar tu requerimiento.`;
+      
+      const mensaje = encodeURIComponent(`Hola Quantum Volt RD, estoy interesado en el servicio de: ${servicio}. Me gustaría recibir más información.`);
+      whatsappLink.href = `https://wa.me/18297789089?text=${mensaje}`;
+    }
+  </script>
 
 </body>
 </html>
