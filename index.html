@@ -7,6 +7,15 @@
   <link rel="stylesheet" href="style.css"/>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  
+  <!-- Google Analytics 4 (Placeholder para configurar tu ID G-XXXXXXXXXX) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 </head>
 <body>
 
@@ -30,14 +39,14 @@
     <div class="hero-content">
       <h1 class="floating-text">Conectamos tu futuro</h1>
       <p class="hero-subtitle">Instalaciones eléctricas avanzadas, domótica y seguridad inteligente.</p>
-      <button onclick="window.location.href='#servicios'">Conoce nuestros servicios</button>
+      <button onclick="window.location.href='#cotizador'">Cotizar mi proyecto</button>
     </div>
   </section>
 
-  <!-- Asistente Interactivo de Servicios -->
-  <section class="interactive-assistant">
-    <h2>¿Qué solución buscas hoy?</h2>
-    <p class="section-desc">Selecciona una categoría para recibir asesoría técnica instantánea</p>
+  <!-- Cotizador Interactivo Dinámico (Nuevo) -->
+  <section class="interactive-assistant" id="cotizador">
+    <h2>Cotizador Rápido de Proyectos</h2>
+    <p class="section-desc">Selecciona el tipo de servicio que necesitas para estructurar tu solicitud</p>
     <div class="assistant-options">
       <button class="option-btn" onclick="seleccionarServicio('Domótica y Smart Home')">
         <i class="fas fa-home"></i> Domótica & Smart Home
@@ -51,8 +60,8 @@
     </div>
     <div id="assistant-response" class="assistant-response hidden">
       <p id="response-text"></p>
-      <a id="whatsapp-link" href="#" target="_blank" class="whatsapp-btn-inline">
-        <i class="fab fa-whatsapp"></i> Hablar con un especialista por WhatsApp
+      <a id="whatsapp-link" href="#" target="_blank" class="whatsapp-btn-inline" onclick="gtag('event', 'click_whatsapp_cotizador');">
+        <i class="fab fa-whatsapp"></i> Enviar cotización por WhatsApp
       </a>
     </div>
   </section>
@@ -137,7 +146,7 @@
       <input type="text" name="nombre" placeholder="Tu nombre" required>
       <input type="email" name="email" placeholder="Tu correo" required>
       <textarea name="message" placeholder="Tu mensaje o requerimiento" rows="5" required></textarea>
-      <button type="submit" class="submit-btn">Enviar mensaje</button>
+      <button type="submit" class="submit-btn" onclick="gtag('event', 'enviar_formulario_contacto');">Enviar mensaje</button>
     </form>
 
     <div class="contact-info">
@@ -160,7 +169,7 @@
   </footer>
 
   <!-- Botón Flotante de WhatsApp -->
-  <a href="https://wa.me/18297789089" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">
+  <a href="https://wa.me/18297789089" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp" onclick="gtag('event', 'click_whatsapp_flotante');">
     <i class="fab fa-whatsapp"></i>
   </a>
 
@@ -172,9 +181,9 @@
       const whatsappLink = document.getElementById('whatsapp-link');
 
       responseBox.classList.remove('hidden');
-      responseText.innerHTML = `Has seleccionado: <strong>${servicio}</strong>. Un técnico especializado de Quantum Volt RD te atenderá de inmediato para evaluar tu requerimiento.`;
+      responseText.innerHTML = `Has seleccionado: <strong>${servicio}</strong>. Haz clic abajo para enviar tu configuración al WhatsApp de Quantum Volt RD y coordinar la evaluación técnica.`;
       
-      const mensaje = encodeURIComponent(`Hola Quantum Volt RD, estoy interesado en el servicio de: ${servicio}. Me gustaría recibir más información.`);
+      const mensaje = encodeURIComponent(`Hola Quantum Volt RD, quiero solicitar una cotización para el servicio de: ${servicio}. Me interesa evaluar mi espacio.`);
       whatsappLink.href = `https://wa.me/18297789089?text=${mensaje}`;
     }
 
