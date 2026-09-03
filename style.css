@@ -252,7 +252,32 @@ section h2 {
   line-height: 1.5;
 }
 
-/* Sección Proyectos */
+/* Sección Proyectos y Filtros */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background-color: #182844;
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background-color: #00f0ff;
+  color: #0b1320;
+  border-color: #00f0ff;
+}
+
 .projects-grid {
   display: flex;
   justify-content: center;
@@ -271,7 +296,7 @@ section h2 {
   align-items: center;
   justify-content: center;
   border: 1px dashed rgba(0, 240, 255, 0.3);
-  transition: transform 0.3s;
+  transition: transform 0.3s, border-color 0.3s;
 }
 
 .project-card:hover {
@@ -290,6 +315,48 @@ section h2 {
 .project-placeholder i {
   font-size: 2.5rem;
   color: #00f0ff;
+}
+
+/* Sección Testimonios */
+.testimonials {
+  background-color: #0d1726;
+}
+
+.testimonial-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background-color: #142238;
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  padding: 30px;
+  width: 42%;
+  border-radius: 15px;
+  min-width: 280px;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-card .quote {
+  font-style: italic;
+  color: #cbd5e1;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.testimonial-card h4 {
+  color: #f4c542;
+  margin: 0;
+}
+
+.client-location {
+  font-size: 0.85rem;
+  color: #94a3b8;
 }
 
 /* Sección Sobre Nosotros */
@@ -418,8 +485,12 @@ footer {
     width: 100%;
   }
 
-  .projects-grid {
+  .projects-grid, .testimonial-container {
     flex-direction: column;
     align-items: center;
+  }
+
+  .testimonial-card {
+    width: 90%;
   }
 }
