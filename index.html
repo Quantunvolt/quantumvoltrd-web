@@ -19,6 +19,7 @@
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
       <a href="#proyectos">Proyectos</a>
+      <a href="#testimonios">Testimonios</a>
       <a href="#nosotros">Sobre Nosotros</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -33,7 +34,7 @@
     </div>
   </section>
 
-  <!-- Asistente Interactivo de Servicios (Nuevo) -->
+  <!-- Asistente Interactivo de Servicios -->
   <section class="interactive-assistant">
     <h2>¿Qué solución buscas hoy?</h2>
     <p class="section-desc">Selecciona una categoría para recibir asesoría técnica instantánea</p>
@@ -78,19 +79,45 @@
     </div>
   </section>
 
-  <!-- Sección de Proyectos / Trabajos -->
+  <!-- Sección de Proyectos / Galería Interactiva -->
   <section id="proyectos" class="projects">
     <h2>Nuestros Trabajos</h2>
     <p class="section-desc">Innovación y calidad comprobada en cada proyecto ejecutado.</p>
+    
+    <div class="filter-buttons">
+      <button class="filter-btn active" onclick="filtrarProyectos('todos')">Todos</button>
+      <button class="filter-btn" onclick="filtrarProyectos('domotica')">Domótica</button>
+      <button class="filter-btn" onclick="filtrarProyectos('electrico')">Eléctrico</button>
+      <button class="filter-btn" onclick="filtrarProyectos('seguridad')">Seguridad</button>
+    </div>
+
     <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-placeholder"><i class="fas fa-bolt"></i><span>Automatización Residencial</span></div>
+      <div class="project-card" data-category="domotica">
+        <div class="project-placeholder"><i class="fas fa-home"></i><span>Automatización Residencial Smart</span></div>
       </div>
-      <div class="project-card">
-        <div class="project-placeholder"><i class="fas fa-solar-panel"></i><span>Sistemas Eléctricos</span></div>
+      <div class="project-card" data-category="electrico">
+        <div class="project-placeholder"><i class="fas fa-bolt"></i><span>Tableros y Sistemas Eléctricos</span></div>
       </div>
-      <div class="project-card">
-        <div class="project-placeholder"><i class="fas fa-video"></i><span>Seguridad y Cámaras</span></div>
+      <div class="project-card" data-category="seguridad">
+        <div class="project-placeholder"><i class="fas fa-video"></i><span>Cámaras de Seguridad HD</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Testimonios / Reseñas de Confianza -->
+  <section id="testimonios" class="testimonials">
+    <h2>Lo que dicen nuestros clientes</h2>
+    <p class="section-desc">La satisfacción y seguridad de quienes confían en Quantum Volt RD</p>
+    <div class="testimonial-container">
+      <div class="testimonial-card">
+        <p class="quote">"Excelente servicio de domótica e iluminación inteligente en casa. Muy profesionales, limpios y eficientes en todo el proceso."</p>
+        <h4>Carlos M.</h4>
+        <span class="client-location">Santo Domingo</span>
+      </div>
+      <div class="testimonial-card">
+        <p class="quote">"Resolvieron un problema complejo en el sistema eléctrico comercial de nuestro local en tiempo récord. Totalmente recomendados."</p>
+        <h4>Mariana P.</h4>
+        <span class="client-location">Distrito Nacional</span>
       </div>
     </div>
   </section>
@@ -137,7 +164,7 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- Script para el Asistente Interactivo -->
+  <!-- Scripts Interactivos -->
   <script>
     function seleccionarServicio(servicio) {
       const responseBox = document.getElementById('assistant-response');
@@ -149,6 +176,21 @@
       
       const mensaje = encodeURIComponent(`Hola Quantum Volt RD, estoy interesado en el servicio de: ${servicio}. Me gustaría recibir más información.`);
       whatsappLink.href = `https://wa.me/18297789089?text=${mensaje}`;
+    }
+
+    function filtrarProyectos(categoria) {
+      const botones = document.querySelectorAll('.filter-btn');
+      botones.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const tarjetas = document.querySelectorAll('.project-card');
+      tarjetas.forEach(tarjeta => {
+        if (categoria === 'todos' || tarjeta.getAttribute('data-category') === categoria) {
+          tarjeta.style.display = 'flex';
+        } else {
+          tarjeta.style.display = 'none';
+        }
+      });
     }
   </script>
 
