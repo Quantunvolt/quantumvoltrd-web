@@ -761,6 +761,73 @@ footer {
   color: #334155;
 }
 
+
+/* ===== Apps ===== */
+.apps-grid {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 30px auto 0;
+}
+.app-card {
+  background: #182844;
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  border-radius: 16px;
+  width: 340px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 26px;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.app-card:hover {
+  transform: translateY(-4px);
+  border-color: #00f0ff;
+}
+.app-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+.app-card h3 {
+  color: #00f0ff;
+  margin: 18px 0 10px;
+  font-size: 1.5rem;
+}
+.app-card p {
+  color: #cbd5e1;
+  padding: 0 22px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.play-btn {
+  display: inline-block;
+  background: #fff;
+  color: #0b1320;
+  font-weight: bold;
+  padding: 12px 30px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.play-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25);
+}
+.play-btn i {
+  margin-right: 8px;
+}
+[data-theme="light"] .app-card {
+  background: #ffffff;
+  border-color: rgba(11, 19, 32, 0.12);
+}
+[data-theme="light"] .app-card p {
+  color: #334155;
+}
+
 /* ===== Tema claro (se activa con data-theme="light" en <html>) ===== */
 [data-theme="light"] body {
   background-color: #f1f5f9;
