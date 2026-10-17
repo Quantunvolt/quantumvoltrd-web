@@ -722,6 +722,45 @@ footer {
   color: #334155;
 }
 
+
+/* ===== Prueba social ===== */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 46px 20px;
+  background: #0e1830;
+  border-top: 1px solid rgba(0, 240, 255, 0.15);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+}
+.stat {
+  text-align: center;
+  min-width: 200px;
+  padding: 10px 30px;
+}
+.stat-num {
+  display: block;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #00f0ff;
+}
+.stat-label {
+  display: block;
+  margin-top: 6px;
+  color: #cbd5e1;
+  font-size: 1rem;
+}
+[data-theme="light"] .stats {
+  background: #dfe9f5;
+}
+[data-theme="light"] .stat-num {
+  color: #0284c7;
+}
+[data-theme="light"] .stat-label {
+  color: #334155;
+}
+
 /* ===== Tema claro (se activa con data-theme="light" en <html>) ===== */
 [data-theme="light"] body {
   background-color: #f1f5f9;
