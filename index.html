@@ -100,17 +100,17 @@
     <h2>Nuestros Servicios</h2>
     <div class="card-container">
       <div class="card">
-        <img src="img/tech.jpg" alt="Instalación tecnológica">
+        <img src="img/tech.jpg" loading="lazy" alt="Instalación tecnológica">
         <h3>Instalación Tecnológica</h3>
         <p>Instalación y configuración de equipos tecnológicos, redes y pantallas de alta definición.</p>
       </div>
       <div class="card">
-        <img src="img/smart.jpg" alt="Smart services">
+        <img src="img/smart.jpg" loading="lazy" alt="Smart services">
         <h3>Smart Services & Domótica</h3>
         <p>Automatización de hogares y negocios: iluminación inteligente, control de accesos y seguridad.</p>
       </div>
       <div class="card">
-        <img src="img/electric.jpg" alt="Instalación eléctrica">
+        <img src="img/electric.jpg" loading="lazy" alt="Instalación eléctrica">
         <h3>Electricidad Residencial y Comercial</h3>
         <p>Instalaciones eléctricas seguras, tableros, cableado estructurado y sistemas de respaldo solar.</p>
       </div>
@@ -126,18 +126,24 @@
       <button class="filter-btn active" onclick="filtrarProyectos('todos')">Todos</button>
       <button class="filter-btn" onclick="filtrarProyectos('domotica')">Domótica</button>
       <button class="filter-btn" onclick="filtrarProyectos('electrico')">Eléctrico</button>
-      <button class="filter-btn" onclick="filtrarProyectos('seguridad')">Seguridad</button>
     </div>
 
     <div class="projects-grid">
-      <div class="project-card" data-category="domotica">
-        <div class="project-placeholder"><i class="fas fa-home"></i><span>Automatización Residencial Smart</span></div>
+      <div class="project-card" data-category="electrico">
+        <img src="img/proyecto-habitacion.jpg" alt="Iluminación decorativa en habitación" loading="lazy">
+        <span class="project-label">Iluminación decorativa</span>
       </div>
       <div class="project-card" data-category="electrico">
-        <div class="project-placeholder"><i class="fas fa-bolt"></i><span>Tableros y Sistemas Eléctricos</span></div>
+        <img src="img/proyecto-sala.jpg" alt="Ventilador y lámpara de techo en sala" loading="lazy">
+        <span class="project-label">Ventiladores y lámparas de techo</span>
       </div>
-      <div class="project-card" data-category="seguridad">
-        <div class="project-placeholder"><i class="fas fa-video"></i><span>Cámaras de Seguridad HD</span></div>
+      <div class="project-card" data-category="domotica">
+        <img src="img/proyecto-led-rgb.jpg" alt="Iluminación LED inteligente RGB" loading="lazy">
+        <span class="project-label">Iluminación LED inteligente RGB</span>
+      </div>
+      <div class="project-card" data-category="domotica">
+        <img src="img/proyecto-led-rojo.jpg" alt="Ambiente con iluminación LED inteligente" loading="lazy">
+        <span class="project-label">Ambientes con LED inteligente</span>
       </div>
     </div>
   </section>
@@ -167,6 +173,38 @@
   </section>
 
   <!-- Sección de Contacto -->
+  <!-- Preguntas frecuentes -->
+  <section id="faq" class="faq">
+    <h2>Preguntas Frecuentes</h2>
+    <p class="section-desc">Respuestas rápidas a lo que más nos preguntan.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Cuánto cuesta una instalación eléctrica? <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a"><p>Depende del alcance del proyecto. Escríbenos por WhatsApp con fotos o una descripción y te damos una cotización sin compromiso.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Los trabajos tienen garantía? <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a"><p>Sí. Todos nuestros trabajos de instalación incluyen garantía, y los equipos que vendemos conservan la garantía del fabricante.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿En qué zonas trabajan? <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a"><p>Trabajamos a domicilio en Santo Domingo y zonas aledañas. Consúltanos por WhatsApp y coordinamos tu visita.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Cuánto tarda una instalación típica? <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a"><p>La mayoría de las instalaciones residenciales (iluminación, bombillas inteligentes, cámaras) se completan en un día. Proyectos mayores se planifican por etapas.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Las bombillas inteligentes necesitan internet? <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a"><p>Para controlarlas desde el celular o con la voz sí necesitan WiFi. Sin internet siguen funcionando como bombillas normales desde el interruptor.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Hacen mantenimiento de instalaciones existentes? <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a"><p>Sí, ofrecemos mantenimiento preventivo y correctivo de sistemas eléctricos, cámaras y equipos de domótica, aunque no los hayamos instalado nosotros.</p></div>
+      </div>
+    </div>
+  </section>
+
   <section id="contacto" class="contact">
     <h2>Contacto</h2>
     <p>¿Listo para llevar tu espacio al siguiente nivel? Escríbenos.</p>
@@ -245,6 +283,13 @@
           tarjeta.style.display = 'none';
         }
       });
+    }
+
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
     }
   </script>
 
