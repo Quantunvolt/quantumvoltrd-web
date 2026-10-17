@@ -46,6 +46,22 @@
   </section>
 
 
+  <!-- Prueba social -->
+  <section class="stats">
+    <div class="stat">
+      <span class="stat-num" data-target="9">0</span>
+      <span class="stat-label">Hogares con instalaciones</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" data-target="6">0</span>
+      <span class="stat-label">Cámaras de seguridad instaladas</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" data-target="5">0</span>
+      <span class="stat-label">Instalaciones de tomacorrientes e interruptores</span>
+    </div>
+  </section>
+
   <!-- Oferta especial -->
   <section class="ofertas" id="ofertas">
     <div class="ofertas-badge">OFERTA ESPECIAL</div>
@@ -284,6 +300,26 @@
         }
       });
     }
+
+    // Contador animado de stats
+    (function() {
+      const nums = document.querySelectorAll('.stat-num');
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            const el = e.target, target = +el.dataset.target;
+            const t0 = performance.now(), dur = 1200;
+            (function tick(t) {
+              const p = Math.min((t - t0) / dur, 1);
+              el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+              if (p < 1) requestAnimationFrame(tick);
+            })(t0);
+            io.unobserve(el);
+          }
+        });
+      }, { threshold: 0.4 });
+      nums.forEach(n => io.observe(n));
+    })();
 
     function toggleFaq(btn) {
       const item = btn.parentElement;
