@@ -1139,3 +1139,121 @@ footer {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ============================================================
+   REDISEÑO HERO v1 (2026-10-26, aprobado por Quantum)
+   Método: Emil Kowalski (movimiento) + Impeccable (tipo/espacio)
+   + Taste (foto real, composición). Contenido y JS intactos.
+   ============================================================ */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Hero: foto real de un trabajo (antes: bloque oscuro sin foto,
+   porque hero-image.jpg no existe) + composición a la izquierda */
+.hero {
+  background:
+    linear-gradient(90deg, rgba(11, 19, 32, 0.9) 0%, rgba(11, 19, 32, 0.6) 55%, rgba(11, 19, 32, 0.35) 100%),
+    url('img/proyecto-sala.jpg') center/cover no-repeat;
+  min-height: 560px;
+  height: auto;
+  padding: 80px 5%;
+  text-align: left;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.floating-text {
+  animation: none;
+  font-size: clamp(2.75rem, 7vw, 5rem);
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+}
+
+.floating-text:hover {
+  color: #00f0ff;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+}
+
+.hero-subtitle {
+  color: #e2e8f0;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  max-width: 560px;
+  margin: 16px 0 32px 0;
+}
+
+/* Botón hero: dorado plano (antes: degradado), con respuesta al toque */
+.hero button {
+  background: #f4c542;
+  transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out), background-color 160ms var(--ease-out);
+}
+
+.hero button:hover {
+  transform: none;
+  box-shadow: 0 4px 15px rgba(244, 197, 66, 0.3);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(244, 197, 66, 0.35);
+  }
+}
+
+.hero button:active {
+  transform: scale(0.97);
+}
+
+/* Entrada escalonada del hero (90 ms entre elementos). Si la
+   animación no corre, el contenido queda visible igual. */
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+.hero-content > h1 {
+  animation: heroRise 500ms var(--ease-out) backwards;
+}
+
+.hero-content > p {
+  animation: heroRise 500ms var(--ease-out) 90ms backwards;
+}
+
+.hero-content > button {
+  animation: heroRise 500ms var(--ease-out) 180ms backwards;
+}
+
+/* Tema claro: misma foto, velo claro */
+[data-theme="light"] .hero {
+  background:
+    linear-gradient(90deg, rgba(241, 245, 249, 0.94) 0%, rgba(241, 245, 249, 0.6) 60%, rgba(241, 245, 249, 0.35) 100%),
+    url('img/proyecto-sala.jpg') center/cover no-repeat;
+}
+
+[data-theme="light"] .floating-text {
+  color: #0f172a;
+  text-shadow: none;
+}
+
+[data-theme="light"] .floating-text:hover {
+  color: #0284c7;
+  text-shadow: none;
+}
+
+[data-theme="light"] .hero-subtitle {
+  color: #334155;
+}
+
+/* Móvil: hero más bajo, título fluido (antes: 380 px fijos, 2.3 rem) */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 440px;
+    padding: 60px 20px;
+  }
+}
